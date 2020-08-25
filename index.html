@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <!-- Vista -->
+    <div id="app">
+        <div class="contenedor">
+            <h2>Ingresa nueva tarea</h2>
+            <input type="text" v-model="tarea">
+            <button @click='agregarTarea'>Agregar tarea</button>
+            <h3>Lista de tareas</h3>
+            <ol>
+                <li v-for="tarea of tareas">{{tarea}}</li>
+            </ol>
+        </div>
+    </div>
+    <!-- Css -->
+    <style>
+        #app{
+            display: flex;
+            justify-content: center;
+            color: tomato;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        input{
+            margin: 30px 0;
+            border-radius: 3px;
+            border: 1px solid sienna;
+            color: tomato;
+        }
+        button{
+            background-color: tomato;
+            color: white;
+            border-radius: 3px;
+            border: 1px solid sienna;
+        }
+        li{
+            padding: 10px 0;
+        }
+    </style>
+    <!-- Importación de Vue desde Cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <!-- Vue -->
+    <script>
+        const Tareas = new Vue ({
+            el: '#app',
+            data: {
+                tarea: '',
+                tareas: []
+            },
+            methods: {
+                agregarTarea(){
+                    this.tareas.push(this.tarea)
+                    this.tarea = ''
+                }
+            }
+        })
+    </script>
+</body>
+</html>
